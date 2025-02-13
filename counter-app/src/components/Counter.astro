@@ -4,12 +4,33 @@ globalThis.counter = 0
 
 <!-- We first initialize the counter, and then we use it within the scope. -->
 <main x-data="{ counter: 0 }">
+	<!-- 
+    ---------------------------
+    The Alpine.js managed part.
+    ---------------------------
+    -->
 	<div id="alp-counter" x-text="counter"></div>
-
 	<div id="buttons">
 		<button x-on:click="counter += 1">+</button>
 		<button x-on:click="counter = (counter > 0) ? counter - 1 : 0">-</button
 		>
+	</div>
+
+	<!-- 
+    ----------------------
+    The HTMX managed part.
+    ----------------------
+    -->
+	<div id="lastSaved">
+		Last saved counter value:
+		<span id="lastSavedCounter"></span>
+	</div>
+	<div id="saveGetArea">
+		<form hx-post="/api/save" hx-swap="none">
+			<input type="hidden" name="counter" x-model="counter" />
+			<button type="submit">Save</button>
+		</form>
+		<button hx-get="/api/get" hx-target="#lastSavedCounter">Get</button>
 	</div>
 </main>
 
@@ -35,5 +56,18 @@ globalThis.counter = 0
 		padding: 4px 12px;
 		border: 1px solid rgb(212, 212, 212);
 		border-radius: 6px;
+	}
+	#lastSaved {
+		display: flex;
+		align-items: center;
+		font-size: 14px;
+		margin: 40px 0;
+		border: 1px solid lightgray;
+		border-radius: 8px;
+		padding: 6px 18px;
+	}
+	#saveGetArea {
+		display: flex;
+		flex-direction: row;
 	}
 </style>
