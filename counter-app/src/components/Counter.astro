@@ -1,21 +1,36 @@
 ---
-let counter = 0
+globalThis.counter = 0
 ---
 
 <main>
 	<div id="counter">{counter}</div>
+	<div id="buttons">
+		<button hx-post="/api/increment" hx-target="#counter">+</button>
+		<button hx-post="/api/decrement" hx-target="#counter">-</button>
+	</div>
 </main>
 
 <style>
 	main {
 		height: 20%;
 		display: flex;
+		flex-direction: column;
+		align-items: center;
 		justify-content: center;
 		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova',
 			'Nimbus Sans', Arial, sans-serif;
 	}
 	#counter {
-		margin-left: 8px;
-		font-size: 26px;
+		font-size: 48px;
+		color: #4f4f4f;
+	}
+	#buttons {
+		margin-top: 20px;
+	}
+	button {
+		margin: 2px 4px;
+		padding: 4px 12px;
+		border: 1px solid rgb(212, 212, 212);
+		border-radius: 6px;
 	}
 </style>

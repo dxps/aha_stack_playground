@@ -7,7 +7,7 @@ import background from '../assets/background.svg'
 	<img id="background" src={background.src} alt="" fetchpriority="high" />
 	<main>
 		<section id="hero">
-			<a href="https://astro.build"
+			<a href="https://astro.build" aria-label="astro logo"
 				><img
 					src={astroLogo.src}
 					width="115"
@@ -16,7 +16,7 @@ import background from '../assets/background.svg'
 				/></a
 			>
 			<section id="links">
-				<a href="https://docs.astro.build">
+				<a href="https://docs.astro.build" aria-label="astro docs">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 487.5 487.5"
@@ -41,7 +41,9 @@ import background from '../assets/background.svg'
 						</g>
 					</svg>
 				</a>
-				<a href="https://astro.build/chat"
+				<a
+					href="https://astro.build/chat"
+					aria-label="astro discord chat"
 					><svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 127.14 96.36"

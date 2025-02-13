@@ -1,0 +1,8 @@
+---
+// Tell Astro that the content return by this page is part of an existing HTML page, it's not a complete HTML page.
+export const partial = true
+
+globalThis.counter += 1
+---
+
+<span>{globalThis.counter}</span>
