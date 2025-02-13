@@ -2,11 +2,14 @@
 globalThis.counter = 0
 ---
 
-<main>
-	<div id="counter">{counter}</div>
+<!-- We first initialize the counter, and then we use it within the scope. -->
+<main x-data="{ counter: 0 }">
+	<div id="alp-counter" x-text="counter"></div>
+
 	<div id="buttons">
-		<button hx-post="/api/increment" hx-target="#counter">+</button>
-		<button hx-post="/api/decrement" hx-target="#counter">-</button>
+		<button x-on:click="counter += 1">+</button>
+		<button x-on:click="counter = (counter > 0) ? counter - 1 : 0">-</button
+		>
 	</div>
 </main>
 
@@ -20,7 +23,7 @@ globalThis.counter = 0
 		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova',
 			'Nimbus Sans', Arial, sans-serif;
 	}
-	#counter {
+	#alp-counter {
 		font-size: 48px;
 		color: #4f4f4f;
 	}
